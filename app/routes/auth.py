@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify,session
+from flask_login import login_user
 from werkzeug.security import generate_password_hash,check_password_hash
 from app.models import User
 from app import db
@@ -29,6 +30,6 @@ def login():
     # Here you would typically check the username and password against the database
     user=User.query.filter_by(username=username).first()
     if user and check_password_hash(user.password, password):
-        session["user_id"]=user.id
+        login_user(user)
         return jsonify({"message": "Login successful!"})
     return jsonify({"error": "Invalid username or password!"}), 401
