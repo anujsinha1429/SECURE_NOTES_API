@@ -1,0 +1,5 @@
+.DS_Store
+instance/
+notes.db
+__pycache__/
+*.pyc
