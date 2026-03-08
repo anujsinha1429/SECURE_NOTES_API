@@ -56,9 +56,9 @@ NOTES_API
 
 Clone the repository
 
-```
+
 git clone https://github.com/anujsinha1429/SECURE_NOTES_API.git
-```
+
 
 Go into the project directory
 
