@@ -62,9 +62,9 @@ git clone https://github.com/anujsinha1429/SECURE_NOTES_API.git
 
 Go into the project directory
 
-```
+
 cd NOTES_API
-```
+
 
 Install dependencies
 
