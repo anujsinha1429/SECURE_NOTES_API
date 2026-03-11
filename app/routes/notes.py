@@ -30,3 +30,27 @@ def get_notes():
             "content": note.content
         })
     return jsonify(results)
+
+@notes.route("/notes/<int:id>",methods=["DELETE"])
+@login_required
+def delete_note(id):
+    note=Note.query.filter_by(id=id,user_id=current_user.id).first()
+    if not note:
+        return jsonify({"message":"Note not found!"}),404
+    db.session.delete(note)
+    db.session.commit()
+    return jsonify({"message":"note deleted successfully!"})
+
+@notes.route("/notes/<int:id>",methods=["PUT"])
+@login_required
+def update_note(id):
+    note=Note.query.filter_by(id=id,user_id=current_user.id).first()
+    if not note:
+        return jsonify({"message":"note not found!"}),404   
+    data= request.get_json()
+    note.title= data.get("title",note.title)
+    note.content= data.get("content",note.content)
+    db.session.commit()
+    return jsonify({"message":"note updated successfully!"})
+
+
