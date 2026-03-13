@@ -5,13 +5,15 @@ from app import db
 
 
 notes= Blueprint('notes', __name__)
-@notes.route("/notes",methods=["POST"])
 
+@notes.route("/notes",methods=["POST"])
 @login_required
 def notes_check():
     data= request.get_json()
     title= data.get("title")
     content= data.get("content")
+    if not title or not content:
+        return jsonify({"message": "Title and content are required!"}), 400
 
     note = Note(title=title,content=content, user_id=current_user.id)
     db.session.add(note)
