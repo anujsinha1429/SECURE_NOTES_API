@@ -10,17 +10,24 @@ auth= Blueprint('auth', __name__)
 def home():
     return jsonify({"message": "Welcome to the Notes API!"})
 
+
+
+
 @auth.route("/register",methods=["POST"])
 def register():
     data=request.get_json()
     username=data.get("username")
     password=data.get("password")
+    existing_user = User.query.filter_by(username=username).first()
+    if existing_user:
+       return jsonify({"error": "Username already exists"}), 400
     hashed_password=generate_password_hash(password)
     # Here you would typically save the user to the database
     user=User(username=username, password=hashed_password)
     db.session.add(user)
     db.session.commit()
     return jsonify({"message": "User registered successfully!"})
+    
 
 @auth.route("/login",methods=["POST"])
 def login():
