@@ -3,6 +3,8 @@ from flask_login import login_user
 from werkzeug.security import generate_password_hash,check_password_hash
 from app.models import User
 from app import db
+from flask_login import logout_user
+from flask_login import login_required
 
 auth= Blueprint('auth', __name__)
  
@@ -40,3 +42,13 @@ def login():
         login_user(user)
         return jsonify({"message": "Login successful!"})
     return jsonify({"error": "Invalid username or password!"}), 401
+
+
+@auth.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return jsonify({"message": "Logged out"})
+
+
+
