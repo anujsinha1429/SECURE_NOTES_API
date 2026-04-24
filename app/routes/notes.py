@@ -23,7 +23,7 @@ def notes_created():
     return jsonify({"status": "success",
                     "data":{
                         "id":note.id,
-                        "tittle": note.title,
+                        "title": note.title,
                         "content":note.content
                         
                     }
