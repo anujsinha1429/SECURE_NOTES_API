@@ -1,164 +1,102 @@
-# 📝 Notes API (Flask)
+# 📝 Secure Notes API
 
-A simple **Notes API** built using **Python Flask**.  
-Users can register, login and create personal notes.  
-This project is part of my **#100DaysOfCode journey** where I am learning backend development by building real projects.
+A simple backend API built using Flask for user authentication and notes management.
 
 ---
 
-## 🚀 Features (Currently Implemented)
+## 🚀 Features
 
-- User Registration
-- User Login (Authentication)
-- Create Notes
-- Get User Notes
-- User specific data using Flask-Login
-- Password hashing for security
-
-More features like **Update Notes and Delete Notes** will be added soon.
+* User Registration
+* User Login
+* Database Integration (SQLite / SQLAlchemy)
+* Deployed on Render
 
 ---
 
 ## 🛠 Tech Stack
 
-- Python
-- Flask
-- Flask-Login
-- SQLAlchemy
-- SQLite
-- Werkzeug (Password Hashing)
+* Python (Flask)
+* SQLAlchemy
+* Gunicorn
+* Render
 
 ---
 
-## 📂 Project Structure
+## 🌐 Live API
+
+https://notes-api-sycv.onrender.com
+
+---
+
+## 📌 API Endpoints
+
+### 🔹 Home
+
+**GET /**
 
 ```
-NOTES_API
-│
-├── app
-│   ├── routes
-│   │   ├── auth.py
-│   │   └── notes.py
-│   │
-│   ├── models.py
-│   └── __init__.py
-│
-├── instance
-│
-├── run.py
-├── requirements.txt
-└── README.md
+Response:
+{
+  "message": "Welcome to the Notes API!"
+}
 ```
 
 ---
 
-## ▶️ How to Run the Project
+### 🔹 Register User
 
-Clone the repository
+**POST /register**
 
+```
+Body:
+{
+  "username": "testuser",
+  "password": "123456"
+}
+```
 
-git clone https://github.com/anujsinha1429/SECURE_NOTES_API.git
+---
 
+### 🔹 Login User
 
-Go into the project directory.
+**POST /login**
 
+```
+Body:
+{
+  "username": "testuser",
+  "password": "123456"
+}
+```
 
+---
+
+## ⚙️ Run Locally
+
+```
+git clone <https://github.com/anujsinha1429/SECURE_NOTES_API.git>
 cd NOTES_API
-
-
-Install dependencies
-
-```
 pip install -r requirements.txt
-```
-
-Run the server
-
-```
-python3 run.py (for mac)
-```
-
-Server will start at:
-
-```
-http://127.0.0.1:5000
+python run.py
 ```
 
 ---
 
-## 📡 API Endpoints
+## 🚀 Deployment
 
-### Register User
-```
-POST /register
-```
-
-Body
-
-```
-{
- "username": "anuj",
- "password": "1234"
-}
-```
+* Hosted on Render
+* Uses Gunicorn as production server
 
 ---
 
-### Login
-```
-POST /login
-```
+## 📌 Future Improvements
 
-Body
-
-```
-{
- "username": "anuj",
- "password": "1234"
-}
-```
-
----
-
-### Create Note
-```
-POST /notes
-```
-
-Body
-
-```
-{
- "title": "study",
- "content": "learn backend"
-}
-```
-
----
-
-### Get Notes
-```
-GET /notes
-```
-
-Returns all notes for the logged-in user.
-
----
-
-## 📚 What I Learned
-
-- Flask Application Factory
-- Blueprints
-- Authentication using Flask-Login
-- SQLAlchemy ORM
-- Backend project structure
-- REST API basics
+* JWT Authentication
+* Notes CRUD (Create, Read, Update, Delete)
+* Frontend Integration
 
 ---
 
 ## 👨‍💻 Author
 
-**Anuj Kumar Sinha**
-
-1st Year Student | Aspiring Backend Developer  
-Python • Flask • Backend Development
+Anuj Sinha 🛐
